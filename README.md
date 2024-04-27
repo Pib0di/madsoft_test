@@ -1,16 +1,5 @@
 # madsoft_test
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![image](https://github.com/Pib0di/madsoft_test/assets/83059277/fb7bead2-1ea1-426b-9771-ab1762c84439)
+![image](https://github.com/Pib0di/madsoft_test/assets/83059277/539e50f4-f514-4c57-952b-7f3666e831ca)
+![image](https://github.com/Pib0di/madsoft_test/assets/83059277/412c3e3e-d8ca-4938-bc71-ba15d4c6fa8f)
+![image](https://github.com/Pib0di/madsoft_test/assets/83059277/533e73db-79ce-4915-89fb-d2bcb4379957)
