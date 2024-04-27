@@ -41,4 +41,9 @@ class Points {
   );
 
   factory Points.fromJson(Map<String, dynamic> json) => _$PointsFromJson(json);
+
+  @override
+  String toString() {
+    return 'Points{x: $x, y: $y, status: $status}';
+  }
 }

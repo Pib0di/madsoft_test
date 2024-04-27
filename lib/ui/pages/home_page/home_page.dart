@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                             onTap: () => _onTap.call(index, context),
                             title: state.jsonParser!.payload[index].title,
                             memoryAfterPhotos: state.memoryAfterPhotos +
-                                state.jsonParser!.payload[index].total_points_count * 5,
+                                state.jsonParser!.payload[index].total_points_count*0.000977,
                             availableMemory: state.totalDiskSpace ?? 0.0,
                             totalPointsCount: state.jsonParser!.payload[index].total_points_count,
                             remainingPoints: state.jsonParser!.payload[index].remaining_points,

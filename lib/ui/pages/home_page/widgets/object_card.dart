@@ -81,14 +81,14 @@ class ObjectCard extends StatelessWidget {
                     ),
                     RichText(
                       text: TextSpan(
-                        text: '$memoryAfterPhotos ГБ ',
+                        text: '${memoryAfterPhotos.toStringAsFixed(1)} ГБ ',
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 16,
                         ),
                         children: [
                           TextSpan(
-                            text: '/ $availableMemory ГБ доступно',
+                            text: '/ ${availableMemory.toStringAsFixed(1)} ГБ доступно',
                             style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 14,
