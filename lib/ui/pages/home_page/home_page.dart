@@ -92,42 +92,46 @@ class _HomePageState extends State<HomePage> {
                     ),
                     home: Material(
                       color: Colors.blue[50],
-                      child: CustomScrollView(
-                        slivers: [
-                          SliverPersistentHeader(
-                            delegate: CustomSliverAppBar(
-                              expandedHeight: 200.0,
-                              searchController: searchController,
+                      child: SafeArea(
+                        child: CustomScrollView(
+                          slivers: [
+                            SliverPersistentHeader(
+                              delegate: CustomSliverAppBar(
+                                expandedHeight: 200.0,
+                                searchController: searchController,
+                              ),
+                              pinned: true,
+                              floating: true,
                             ),
-                            pinned: true,
-                            floating: true,
-                          ),
-                          state.jsonParser == null
-                              ? const Center(child: CircularProgressIndicator())
-                              : SliverList(
-                                  delegate: SliverChildBuilderDelegate(
-                                    (BuildContext context, int index) {
-                                      return Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 16.0,
-                                          right: 8,
-                                          left: 8,
-                                        ),
-                                        child: ObjectCard(
-                                          onTap: () => _onTap.call(index, context),
-                                          title: filteredItems[index].title,
-                                          memoryAfterPhotos: state.memoryAfterPhotos +
-                                              filteredItems[index].total_points_count * 0.000977,
-                                          availableMemory: state.totalDiskSpace ?? 0.0,
-                                          totalPointsCount: filteredItems[index].total_points_count,
-                                          remainingPoints: filteredItems[index].remaining_points,
-                                        ),
-                                      );
-                                    },
-                                    childCount: filteredItems.length,
+                            state.jsonParser == null
+                                ? const Center(child: CircularProgressIndicator())
+                                : SliverList(
+                                    delegate: SliverChildBuilderDelegate(
+                                      (BuildContext context, int index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: 16.0,
+                                            right: 8,
+                                            left: 8,
+                                          ),
+                                          child: ObjectCard(
+                                            onTap: () => _onTap.call(
+                                                index, filteredItems[index].title, context),
+                                            title: filteredItems[index].title,
+                                            memoryAfterPhotos: state.memoryAfterPhotos +
+                                                filteredItems[index].total_points_count * 0.000977,
+                                            availableMemory: state.totalDiskSpace ?? 0.0,
+                                            totalPointsCount:
+                                                filteredItems[index].total_points_count,
+                                            remainingPoints: filteredItems[index].remaining_points,
+                                          ),
+                                        );
+                                      },
+                                      childCount: filteredItems.length,
+                                    ),
                                   ),
-                                ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -149,11 +153,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  _onTap(int index, BuildContext context) {
+  _onTap(int index, String title, BuildContext context) {
     Navigator.push(
       context,
       CupertinoPageRoute(
-        builder: (context) => const DisplayScheme(),
+        builder: (context) => DisplayScheme(title: title),
       ),
     );
     context.read<HomePageBloc>().add(OpenMockScheme(index));

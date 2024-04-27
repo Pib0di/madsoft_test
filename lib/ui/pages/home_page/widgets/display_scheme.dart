@@ -1,12 +1,13 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:madsoft_test/ui/common/widgets/text_widgets.dart';
 import 'package:madsoft_test/ui/pages/home_page/bloc/home_page_bloc.dart';
 
 class DisplayScheme extends StatefulWidget {
-  const DisplayScheme({super.key});
+  final String title;
+
+  const DisplayScheme({super.key, required this.title});
 
   @override
   State<DisplayScheme> createState() => _DisplaySchemeState();
@@ -24,6 +25,9 @@ class _DisplaySchemeState extends State<DisplayScheme> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Head2(widget.title),
+      ),
       child: BlocBuilder<HomePageBloc, HomePageState>(
         builder: (context, state) {
           width = state.imageParam.width.toDouble();
@@ -47,8 +51,8 @@ class _DisplaySchemeState extends State<DisplayScheme> {
                       ),
                     )
                   : Positioned(
-                      left: e.x.toDouble() * 1/ aspectRatio,
-                      top: e.y.toDouble() * 1/aspectRatio,
+                      left: e.x.toDouble() * 1 / aspectRatio,
+                      top: e.y.toDouble() * 1 / aspectRatio,
                       child: const Icon(
                         Icons.camera,
                         color: Colors.blueAccent,
@@ -77,35 +81,36 @@ class _DisplaySchemeState extends State<DisplayScheme> {
                   ),
                   child: LayoutBuilder(
                     builder: (BuildContext context, BoxConstraints constraints) {
-                    return Stack(
-                      children: [...state.listPoints.map(
+                      return Stack(
+                        children: [
+                          ...state.listPoints.map(
                             (e) {
                               final scale = constraints.maxWidth / width;
 
-                          return e.status == 'completed'
-                              ? Positioned(
-                            left: e.x.toDouble() * scale,
-                            top: e.y.toDouble() * scale,
-                            child: const Icon(
-                              Icons.add_circle,
-                              color: Colors.greenAccent,
-                              size: 10,
-                            ),
-                          )
-                              : Positioned(
-                            left: e.x.toDouble() *  scale,
-                            top: e.y.toDouble() *  scale,
-                            child: const Icon(
-                              Icons.camera,
-                              color: Colors.blueAccent,
-                              size: 10,
-                            ),
-                          );
-                        },
-                      ),],
-                    );
+                              return e.status == 'completed'
+                                  ? Positioned(
+                                      left: e.x.toDouble() * scale,
+                                      top: e.y.toDouble() * scale,
+                                      child: const Icon(
+                                        Icons.add_circle,
+                                        color: Colors.greenAccent,
+                                        size: 10,
+                                      ),
+                                    )
+                                  : Positioned(
+                                      left: e.x.toDouble() * scale,
+                                      top: e.y.toDouble() * scale,
+                                      child: const Icon(
+                                        Icons.camera,
+                                        color: Colors.blueAccent,
+                                        size: 10,
+                                      ),
+                                    );
+                            },
+                          ),
+                        ],
+                      );
                     },
-
                   ),
                 ),
               ),
